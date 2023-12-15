@@ -1,7 +1,9 @@
 <template>
   <div class="app">
-    <post-form/>
-    <post-list/>
+    <post-form @create="createPost" @delete="deletePost"/>
+    <post-list 
+      :posts="posts"
+    />
   </div>
 </template>
 
@@ -23,18 +25,14 @@ export default {
         { id: 5, title: 'Title 5', body: 'Body 5' },
         { id: 6, title: 'Title 6', body: 'Body 6' },
       ],
-      title: '',
-      body: '',
     }
   },
     methods: {
-    deletePost() {
-      this.posts.pop();
-    },
-    createPost() {
-      this.posts.push({ id: this.posts.length + 1, title: `${this.title} ${this.posts.length + 1}`, body: `${this.body} ${this.posts.length + 1}` });
-      this.title = '';
-      this.body = '';
+      deletePost() {
+        this.posts.pop();
+     },
+      createPost(post) {
+      this.posts.push({ id: this.posts.length + 1, title: `${post.title} ${this.posts.length + 1}`, body: `${post.body} ${this.posts.length + 1}` });
     }
   }
 }
