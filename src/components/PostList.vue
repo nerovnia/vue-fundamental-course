@@ -8,7 +8,16 @@
 </template>
   
 
-<script></script>
+<script>
+export default {
+  props: {
+    posts: {
+      type: Array,
+      required: true,
+    }
+  }
+}
+</script>
 
 <style>
 .post {
