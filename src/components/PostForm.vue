@@ -3,14 +3,17 @@
     <h4>Create post:</h4>
     <input v-model="post.title" class="input" type="text" placeholder="Name">
     <input v-model="post.body" class="input" type="text" placeholder="Description">
-    <button @click="createPost" class="btn">Create</button>
+    <my-button @click="createPost" class="btn">Create</my-button>
+    <my-button @click="deletePost" class="btn">Delete post</my-button>
   </form>
-  <button @click="deletePost" class="btn">Delete post</button>
 </template>
   
 
 <script>
+import MyButton from "@/components/UI/MyButton";
 export default {
+  components: { MyButton },
+  emits: ["create", 'delete'],
   data() {
     return {
       post: {
@@ -45,14 +48,5 @@ form {
   border: 1px solid teal;
   padding: 10px 15px;
   margin-top: 15px;
-}
-
-.btn {
-  margin-top: 15px;
-  align-self: flex-end;
-  padding: 10px 15px;
-  background: none;
-  color: teal;
-  border: 1px solid teal;
 }
 </style>
